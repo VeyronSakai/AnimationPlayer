@@ -1,6 +1,6 @@
 {
-    "name": "com.veyronsakai.animationplayer",
-    "displayName": "AnimationPlayer",
+    "name": "com.veyronsakai.animationutilities",
+    "displayName": "AnimationUtilities",
     "version": "0.0.1",
     "unity": "2020.2",
     "description": "Playing Animation",
