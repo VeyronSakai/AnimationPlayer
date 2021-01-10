@@ -1,0 +1,15 @@
+{
+    "name": "com.veyronsakai.animationplayer",
+    "displayName": "AnimationPlayer",
+    "version": "0.0.1",
+    "unity": "2020.2",
+    "description": "Playing Animation",
+    "dependencies": {
+        "com.unity.test-framework": "1.0.0",
+        "com.unity.ext.nunit": "1.0.0",
+        "com.cysharp.unitask": "2.1.0"
+    },
+    "author": {
+        "name": "Yuki Sakai"
+      }
+}
