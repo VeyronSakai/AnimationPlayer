@@ -7,7 +7,7 @@ namespace AnimationUtilities
 {
     public static class AnimationPlayer
     {
-        public static void Play(UnityEngine.Animation animation, AnimationClip clip)
+        public static void Play(Animation animation, AnimationClip clip)
         {
             ThrowIfAnimationIsNull(animation);
 
@@ -19,7 +19,7 @@ namespace AnimationUtilities
             animation.Play(clip.name);
         }
 
-        public static async UniTask PlayAsync(UnityEngine.Animation animation, AnimationClip clip,
+        public static async UniTask PlayAsync(Animation animation, AnimationClip clip,
             CancellationToken cancellationToken = default)
         {
             ThrowIfAnimationIsNull(animation);
@@ -28,18 +28,23 @@ namespace AnimationUtilities
             {
                 return;
             }
-            
+
             animation.Play(clip.name);
 
-            await UniTask.WaitWhile(() => animation.IsPlaying(clip.name), PlayerLoopTiming.Update, cancellationToken);
+            await UniTask.WaitWhile(() => IsPlayingClip(animation, clip), PlayerLoopTiming.Update, cancellationToken);
         }
 
-        private static void ThrowIfAnimationIsNull(UnityEngine.Animation animation)
+        private static void ThrowIfAnimationIsNull(Animation animation)
         {
             if (animation == null)
             {
                 throw new ArgumentNullException();
             }
+        }
+
+        private static bool IsPlayingClip(Animation animation, AnimationClip clip)
+        {
+            return animation != null && animation.IsPlaying(clip.name);
         }
     }
 }
